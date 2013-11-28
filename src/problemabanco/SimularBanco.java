@@ -12,10 +12,11 @@ import java.util.Stack;
  */
 
 public class SimularBanco {
+    hello!!
     Stack<Object> ListadoEventos;
     boolean[] CajeroOcupado;
     double Tiempollegada,TiempoAtencion;
-    Evento evento;
+    Cliente cliente;
     int Cola;
     int ClientePerdido;
     int ClienteAtendido;
@@ -40,9 +41,8 @@ public class SimularBanco {
                     Cola++;
                 }else{
                     ClienteAtendido++;
-                    CajeroOcupado[NumCajeroLibre]=true;
-                    timeAtencion=generarTiempoAtencion();
-                    totalTiempoAtencion+=timeAtencion;
+                    CajeroOcupado[NumCajeroLibre]=true;              
+                   
                 }
             }
         }
@@ -52,15 +52,11 @@ public class SimularBanco {
     }
     public void generarLlegada(){
         Tiempollegada=(-1)*Math.log(Math.random());
-        evento=new Evento("llegada",Tiempollegada);
-        ListadoEventos.push(evento);        
-    }
-    public double generarTiempoAtencion(){
         TiempoAtencion=(10-2)*Math.random()+2;
-        evento=new Evento("atencion",TiempoAtencion);
-        ListadoEventos.push(evento);        
-         return TiempoAtencion;
+        cliente=new Cliente(Tiempollegada,TiempoAtencion);
+    //    ListadoEventos.push(cliente);        
     }
+    
 
     private boolean haycajerolibre() {
        boolean libre=false;
