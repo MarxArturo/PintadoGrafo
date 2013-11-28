@@ -19,7 +19,8 @@ public class SimularBanco {
     int Cola;
     int ClientePerdido;
     int ClienteAtendido;
-    int NumCajeroLibre;
+    int NumCajeroLibre=0;
+    double totalTiempoAtencion;
     
     public void inicializarSimulacion(int CantidadCajeros){
         CajeroOcupado=new boolean[CantidadCajeros];
@@ -29,12 +30,20 @@ public class SimularBanco {
     }
     
     public  void eventollegada(){
+        double timeAtencion;
         generarLlegada();
         if(Cola>7){
             ClientePerdido++;
         }else{
             if(haycajerolibre()==true){
-                if()
+                if(Cola>0&&Cola<=7){
+                    Cola++;
+                }else{
+                    ClienteAtendido++;
+                    CajeroOcupado[NumCajeroLibre]=true;
+                    timeAtencion=generarTiempoAtencion();
+                    totalTiempoAtencion+=timeAtencion;
+                }
             }
         }
     }
@@ -46,10 +55,11 @@ public class SimularBanco {
         evento=new Evento("llegada",Tiempollegada);
         ListadoEventos.push(evento);        
     }
-    public void generarSalida(){
+    public double generarTiempoAtencion(){
         TiempoAtencion=(10-2)*Math.random()+2;
         evento=new Evento("atencion",TiempoAtencion);
         ListadoEventos.push(evento);        
+         return TiempoAtencion;
     }
 
     private boolean haycajerolibre() {
