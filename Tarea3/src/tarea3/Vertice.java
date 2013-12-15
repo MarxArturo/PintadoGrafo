@@ -1,3 +1,5 @@
+package tarea3;
+
 import java.io.*;
 import java.awt.*;
 import java.util.Vector;

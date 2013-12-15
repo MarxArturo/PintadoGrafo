@@ -14,11 +14,12 @@ import javax.swing.JOptionPane;
  * @author Marx
  */
 public class Interfaz extends javax.swing.JFrame {
-    private Grafo automata;
+    private Grafo grafo;
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
+        grafo=new Grafo();
         initComponents();
     }
 
@@ -149,12 +150,12 @@ public class Interfaz extends javax.swing.JFrame {
             //		botonConvertir.setEnabled(true);
 
             //Grafico de automata entrante
-            JFrame ventanaGrafico = new JFrame("Automata de Entrada");
+            JFrame ventanaGrafico = new JFrame("Grafo de Entrada");
             ventanaGrafico.setSize(600, 600);
             ventanaGrafico.setLocationRelativeTo(null);
             ventanaGrafico.getContentPane().setLayout(null);
 
-            Vector datosAutomata = grado.getDatos(false);
+            Vector datosAutomata = grafo.getDatos(false);
             Graficador grafico = new Graficador(datosAutomata);
             ventanaGrafico.getContentPane().add(grafico);
 

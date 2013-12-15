@@ -1,9 +1,11 @@
+package tarea3;
+
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-import tarea3.Nodo;
+
 
 public class AdministraArchivos
 {
