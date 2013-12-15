@@ -222,4 +222,8 @@ public class AdministraArchivos
         return estados;
     }
 
+    public Vector getAllNodos() {
+        return allNodos;
+    }
+
 }

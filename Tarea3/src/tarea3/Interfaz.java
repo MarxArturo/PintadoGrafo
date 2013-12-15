@@ -4,7 +4,9 @@
  */
 package tarea3;
 
+import java.awt.Color;
 import java.util.Vector;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,11 +17,17 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz extends javax.swing.JFrame {
     private Grafo grafo;
+    private Vector allnodes;
+    private Color[] Colores;
+    private Vector allcolor ;
+    
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         grafo=new Grafo();
+        allcolor=new Vector();
+        allnodes=new Vector();
         initComponents();
     }
 
@@ -42,6 +50,9 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        Bcolores = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        TxCantColores = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coloreado de Grafos - Algoritmo Las Vegas");
@@ -82,6 +93,22 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("MARX ARTURO ARIAS - 0840247");
 
+        Bcolores.setText("Cargar Colores");
+        Bcolores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BcoloresActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Cantidad de Colores:");
+
+        TxCantColores.setText("4");
+        TxCantColores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxCantColoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,18 +117,6 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BGraficar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                                    .addComponent(TxRuta))
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BSelect))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -109,7 +124,24 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(jLabel4))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
-                                .addComponent(jLabel3)))))
+                                .addComponent(jLabel3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                            .addComponent(TxRuta)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TxCantColores))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Bcolores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,15 +162,20 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BSelect))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bcolores)
+                    .addComponent(jLabel8)
+                    .addComponent(TxCantColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BGraficar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,7 +185,8 @@ public class Interfaz extends javax.swing.JFrame {
         if (grafo.cargarAutomata(TxRuta.getText())) {
             
             //		botonConvertir.setEnabled(true);
-
+            allnodes=grafo.administrador.getAllNodos();
+            Pintor pintor=new Pintor(allnodes, allcolor);
             //Grafico de automata entrante
             JFrame ventanaGrafico = new JFrame("Grafo de Entrada");
             ventanaGrafico.setSize(600, 600);
@@ -156,7 +194,7 @@ public class Interfaz extends javax.swing.JFrame {
             ventanaGrafico.getContentPane().setLayout(null);
 
             Vector datosAutomata = grafo.getDatos(false);
-            Graficador grafico = new Graficador(datosAutomata);
+            Graficador grafico = new Graficador(datosAutomata,pintor.colorVegas(),Colores);
             ventanaGrafico.getContentPane().add(grafico);
 
             ventanaGrafico.setResizable(false);
@@ -174,9 +212,27 @@ public class Interfaz extends javax.swing.JFrame {
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             TxRuta.setText(fileChooser.getSelectedFile().getPath());
-            BGraficar.setEnabled(true);
+            
         }
     }//GEN-LAST:event_BSelectActionPerformed
+
+    private void BcoloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcoloresActionPerformed
+        int x= Integer.parseInt(TxCantColores.getText());
+        Colores = new Color[x];
+        Color c;
+        for(int d=0;d<x;d++){
+        JColorChooser seleccionarColor=new JColorChooser();
+        c=seleccionarColor.showDialog(null, "Seleccione un Color", Color.BLUE);
+        Colores[d]=c;
+        allcolor.add(d);
+        }
+        BGraficar.setEnabled(true);
+        
+    }//GEN-LAST:event_BcoloresActionPerformed
+
+    private void TxCantColoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCantColoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxCantColoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +271,8 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BGraficar;
     private javax.swing.JButton BSelect;
+    private javax.swing.JButton Bcolores;
+    private javax.swing.JTextField TxCantColores;
     private javax.swing.JTextField TxRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -223,5 +281,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,9 +15,13 @@ public class Graficador extends Canvas
 	private Vertice [] vertices;
 	private Vector aristas;
 	private Point [] coords;
+        private Vector colores;
+        private Color[] colorss;
 	
-	public Graficador(Vector datosAutomata)
+	public Graficador(Vector datosAutomata, Vector colores, Color[] colorss)
 	{
+                this.colores=colores;
+                this.colorss=colorss;
 		setBounds(0, 0, 600, 600);
 		setBackground(Color.WHITE);
 		int altura=20;
@@ -188,19 +192,21 @@ public class Graficador extends Canvas
 		//Dibujar vertices
 		for(int i=0; i<vertices.length; i++)
 		{
-			g.setColor(new Color(255, 100, 100));//color predeterminado vertices
-			if(i==estadoInicial)
-			{
-				g.setColor(new Color(180, 0, 0));//color vertice inicial
-			}
+                        Vector vert=(Vector)colores.elementAt(i);
+                        Color s=colorss[(int)vert.elementAt(1)];
+			g.setColor(s);//color predeterminado vertices
+//			if(i==estadoInicial)
+//			{
+//				g.setColor(new Color(180, 0, 0));//color vertice inicial
+//			}
 			
 			g.fillOval(vertices[i].getCoords1().x, vertices[i].getCoords1().y, vertices[i].getRadio()*2, vertices[i].getRadio()*2);
 						
-			if(vertices[i].isEstadoFinal())//vertices finales
-			{
-				g.setColor(Color.BLACK);
-				g.drawOval(vertices[i].getCoords1().x-3, vertices[i].getCoords1().y-3, vertices[i].getRadio()*2+5, vertices[i].getRadio()*2+5);
-			}
+//			if(vertices[i].isEstadoFinal())//vertices finales
+//			{
+//				g.setColor(Color.BLACK);
+//				g.drawOval(vertices[i].getCoords1().x-3, vertices[i].getCoords1().y-3, vertices[i].getRadio()*2+5, vertices[i].getRadio()*2+5);
+//			}
 			
 			g.setColor(Color.RED);
 			g.drawString("q"+i, vertices[i].getCoords1().x-10, vertices[i].getCoords1().y-2);
