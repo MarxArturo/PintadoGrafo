@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import tarea3.Nodo;
 
 public class AdministraArchivos
 {
@@ -9,12 +11,15 @@ public class AdministraArchivos
     private Vector estadosFinales; //vector de enteros
     private Vector simbolos; // vector de chars
     private Vector[] estados; // arreglo de vectores de enteros
+    private Vector allNodos;
+    
     
     public AdministraArchivos()
     {
         estadoInicial = 0;
         estadosFinales = new Vector(1,1); //vector de enteros
         simbolos = new Vector(1,1); // vector de chars
+        
     }
     
     public boolean leerAutomata(String nombre)
@@ -69,14 +74,18 @@ public class AdministraArchivos
                   cont++;
                 }
 
-                for(int i = 0; i < strEstados.length; i++)
+                for(int i = 0; i < strEstados.length; i++)//por nodo
                 {
                     vector = new Vector(1,1);
                     separador = new StringTokenizer(strEstados[i], ",");
-
-                    while (separador.hasMoreTokens())
+                    Vector adyacente=new Vector();
+                    
+                    while (separador.hasMoreTokens())//conectados a
                     {
                         String dato = separador.nextToken();
+                        if(!dato.equals("#")){
+                            adyacente.add(dato);
+                        }
                         try
                         {
                             vector.add(Integer.parseInt(dato));
@@ -86,12 +95,14 @@ public class AdministraArchivos
                             vector.add(dato);
                         }
                     }
-                    
+                    Nodo nodo=new Nodo(i, adyacente);
+                    allNodos.add(nodo);
                     estados[indice].add(vector);
                     indice++;
                 }
 
             }
+            System.out.println(allNodos);
             in.close();
             
             return true;

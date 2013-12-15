@@ -5,20 +5,20 @@ import java.lang.Math;
 public class Arista
 {
 	private Point coords1, coords2, coordsMedias;
-	private Point [] coordsFlecha;
-	private String simbolo;
+	//private Point [] coordsFlecha;
+	//private String simbolo;
 	
-	public Arista(Point inCoords1, Point inCoords2, String inSimbolo)
+	public Arista(Point inCoords1, Point inCoords2)
 	{
 		coords1=inCoords1;
 		coords2=inCoords2;
-		simbolo=inSimbolo;
+		//simbolo=inSimbolo;
 		
 		//cambiar a simbolo de epsilon
-		if(simbolo.equals("_"))
-		{
-			simbolo="E";
-		}
+//		if(simbolo.equals("_"))
+//		{
+//			simbolo="E";
+//		}
 		
 		//coordsMedias (punto para que la arista no sea una linea recta)
 		int diferenciaX=(int)(Math.random()*41-20);//para que se diferencien visualmente las aristas
@@ -30,7 +30,7 @@ public class Arista
 		double longitud=Math.sqrt(Math.pow(coordsMedias.x-coords2.x, 2)+Math.pow(coordsMedias.y-coords2.y, 2));
 		
 		//Puntos de la flecha
-		coordsFlecha=new Point [2];
+		//coordsFlecha=new Point [2];
 		int longitudFlecha=18;//longitud de la flecha
 		double diferenciaAngulos=0.04;//para la anchura de la flecha
 		double teta;//angulo
@@ -44,14 +44,14 @@ public class Arista
 			teta=Math.PI/2;
 		}
 		
-		coordsFlecha[0]=new Point((int)Math.round(coordsMedias.x+(Math.cos(teta+diferenciaAngulos)*(longitud-longitudFlecha))), (int)Math.round(coordsMedias.y+(Math.sin(teta+diferenciaAngulos)*(longitud-longitudFlecha))));//calculo del punto1 de la flecha
-		coordsFlecha[1]=new Point((int)Math.round(coordsMedias.x+(Math.cos(teta-diferenciaAngulos)*(longitud-longitudFlecha))), (int)Math.round(coordsMedias.y+(Math.sin(teta-diferenciaAngulos)*(longitud-longitudFlecha))));//calculo del punto2 de la flecha
+		//coordsFlecha[0]=new Point((int)Math.round(coordsMedias.x+(Math.cos(teta+diferenciaAngulos)*(longitud-longitudFlecha))), (int)Math.round(coordsMedias.y+(Math.sin(teta+diferenciaAngulos)*(longitud-longitudFlecha))));//calculo del punto1 de la flecha
+		//coordsFlecha[1]=new Point((int)Math.round(coordsMedias.x+(Math.cos(teta-diferenciaAngulos)*(longitud-longitudFlecha))), (int)Math.round(coordsMedias.y+(Math.sin(teta-diferenciaAngulos)*(longitud-longitudFlecha))));//calculo del punto2 de la flecha
 	}
 	
-	public Point [] getCoordsFlecha()
-	{
-		return coordsFlecha;
-	}
+//	public Point [] getCoordsFlecha()
+//	{
+//		return coordsFlecha;
+//	}
 	
 	public Point getCoords1()
 	{
@@ -68,8 +68,8 @@ public class Arista
 		return coordsMedias;
 	}
 	
-	public String getSimbolo()
-	{
-		return simbolo;
-	}
+//	public String getSimbolo()
+//	{
+//		return simbolo;
+//	}
 }

@@ -91,7 +91,7 @@ public class Graficador extends Canvas
 					try
 					{
 						System.out.println("Vertice "+n+" va conectado con el vertice "+(Integer)((Vector)estados[i].get(n)).get(c)+" con el simbolo "+simbolos.get(i));
-						aristas.add(new Arista(vertices[n].getCoordsCentro(), vertices[(Integer)((Vector)estados[i].get(n)).get(c)].getCoordsCentro(), String.valueOf(simbolos.get(i))));
+						aristas.add(new Arista(vertices[n].getCoordsCentro(), vertices[(Integer)((Vector)estados[i].get(n)).get(c)].getCoordsCentro()));
 					}
 					catch(ClassCastException e)
 					{
@@ -149,7 +149,7 @@ public class Graficador extends Canvas
 				
 				g.drawOval(aristaActual.getCoords1().x-orientacionX, aristaActual.getCoords1().y-orientacionY, 30, 30);
 				g.setColor(Color.BLUE);
-				g.drawString(aristaActual.getSimbolo(), aristaActual.getCoords1().x+25*sentidoX, aristaActual.getCoords2().y+25*sentidoY);
+//				g.drawString(aristaActual.getSimbolo(), aristaActual.getCoords1().x+25*sentidoX, aristaActual.getCoords2().y+25*sentidoY);
 			}
 			else
 			{
@@ -164,22 +164,22 @@ public class Graficador extends Canvas
 				//Flecha de la arista
 				int [] puntosFlechaX=new int [3];
 				int [] puntosFlechaY=new int [3];
-				puntosFlechaX[0]=aristaActual.getCoords2().x;
-				puntosFlechaX[1]=aristaActual.getCoordsFlecha()[0].x;
-				puntosFlechaX[2]=aristaActual.getCoordsFlecha()[1].x;
-				puntosFlechaY[0]=aristaActual.getCoords2().y;
-				puntosFlechaY[1]=aristaActual.getCoordsFlecha()[0].y;
-				puntosFlechaY[2]=aristaActual.getCoordsFlecha()[1].y;
+//				puntosFlechaX[0]=aristaActual.getCoords2().x;
+//				puntosFlechaX[1]=aristaActual.getCoordsFlecha()[0].x;
+//				puntosFlechaX[2]=aristaActual.getCoordsFlecha()[1].x;
+//				puntosFlechaY[0]=aristaActual.getCoords2().y;
+//				puntosFlechaY[1]=aristaActual.getCoordsFlecha()[0].y;
+//				puntosFlechaY[2]=aristaActual.getCoordsFlecha()[1].y;
 				
-				g.setColor(new Color(200, 200, 255));
-				g.fillPolygon(puntosFlechaX, puntosFlechaY, 3);
-				
-				g.setColor(Color.BLUE);
-				g.drawPolygon(puntosFlechaX, puntosFlechaY, 3);
+//				g.setColor(new Color(200, 200, 255));
+//				g.fillPolygon(puntosFlechaX, puntosFlechaY, 3);
+//				
+//				g.setColor(Color.BLUE);
+//				g.drawPolygon(puntosFlechaX, puntosFlechaY, 3);
 				
 				//Simbolo de la arista
 				g.setColor(Color.BLUE);
-				g.drawString(aristaActual.getSimbolo(), aristaActual.getCoordsMedias().x+5, aristaActual.getCoordsMedias().y+5);
+				//g.drawString(aristaActual.getSimbolo(), aristaActual.getCoordsMedias().x+5, aristaActual.getCoordsMedias().y+5);
 			}
 		}
 		
