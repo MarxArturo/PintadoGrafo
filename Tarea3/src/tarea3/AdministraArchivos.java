@@ -12,6 +12,7 @@ public class AdministraArchivos
     private Vector simbolos; // vector de chars
     private Vector[] estados; // arreglo de vectores de enteros
     private Vector allNodos;
+    private Nodo[] nodos;
     
     
     public AdministraArchivos()
@@ -19,7 +20,7 @@ public class AdministraArchivos
         estadoInicial = 0;
         estadosFinales = new Vector(1,1); //vector de enteros
         simbolos = new Vector(1,1); // vector de chars
-        
+        allNodos=new Vector();
     }
     
     public boolean leerAutomata(String nombre)
@@ -55,10 +56,12 @@ public class AdministraArchivos
             }
 
             estados = new Vector[simbolos.size()];
+            nodos = new Nodo[simbolos.size()];
 
             for(int i = 0; i < simbolos.size();i++)
             {
                 estados[i] = new Vector(1,1);
+                
             }
 
             while ((linea = br.readLine()) != null)
@@ -84,7 +87,8 @@ public class AdministraArchivos
                     {
                         String dato = separador.nextToken();
                         if(!dato.equals("#")){
-                            adyacente.add(dato);
+                            adyacente.add(Integer.parseInt(dato));
+                            
                         }
                         try
                         {
@@ -96,13 +100,19 @@ public class AdministraArchivos
                         }
                     }
                     Nodo nodo=new Nodo(i, adyacente);
-                    allNodos.add(nodo);
+                    
                     estados[indice].add(vector);
+                    nodos[indice]=nodo;
                     indice++;
                 }
 
             }
-            System.out.println(allNodos);
+            for(int r=0;r<nodos.length;r++){
+                allNodos.add(nodos[r]);
+            }
+//            for(int y=0;y<allNodos.size();y++){
+//            Nodo n=(Nodo)allNodos.elementAt(y);    
+//            System.out.println(n.getId());}
             in.close();
             
             return true;

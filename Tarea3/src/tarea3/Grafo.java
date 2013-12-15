@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.Vector;
 
-public class Automata
+public class Grafo
 {
     private Integer estadoInicial; //Estado donde incia el automata
     private int estadoFinal;       //ultimo estado en el que termino el algoritmo
@@ -20,7 +20,7 @@ public class Automata
     private Vector[] estadosConversion;
     private Vector conjuntos;
 
-    public Automata()
+    public Grafo()
     {
     }
 

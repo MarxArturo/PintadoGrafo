@@ -9,14 +9,14 @@ public class GUI extends JFrame implements ActionListener
         private JTextField textRutaGrafo,  textRutaCadenas;
         private JLabel labelGrafo, labelCadenas;
         private Container contenedor;
-        private Automata automata;
+        private Grafo automata;
         private boolean boolCadenas = false;
         private boolean boolAutomata = false;
 
         public GUI()
         {
               this.setTitle("Coloreado de Grafos");
-              automata = new Automata();
+              automata = new Grafo();
 
               botonArchivoGrafo = new JButton("...");
               //botonConvertir =new JButton("Convertir a AFD");
