@@ -96,7 +96,7 @@ public class Graficador extends Canvas
 				{
 					try
 					{
-						System.out.println("Vertice "+n+" va conectado con el vertice "+(Integer)((Vector)estados[i].get(n)).get(c)+" con el simbolo "+simbolos.get(i));
+						//System.out.println("Vertice "+n+" va conectado con el vertice "+(Integer)((Vector)estados[i].get(n)).get(c)+" con el simbolo "+simbolos.get(i));
 						aristas.add(new Arista(vertices[n].getCoordsCentro(), vertices[(Integer)((Vector)estados[i].get(n)).get(c)].getCoordsCentro()));
 					}
 					catch(ClassCastException e)
