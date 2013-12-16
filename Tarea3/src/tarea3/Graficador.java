@@ -17,6 +17,7 @@ public class Graficador extends Canvas
 	private Point [] coords;
         private Vector colores;
         private Color[] colorss;
+        private Vector aristasActuales;
 	
 	public Graficador(Vector datosAutomata, Vector colores, Color[] colorss)
 	{
@@ -85,9 +86,9 @@ public class Graficador extends Canvas
 		
 		//Crear aristas
 		aristas=new Vector(1, 1);
-		
+		boolean aristaigual=false;
 		//aristas.add(new Arista(new Point(vertices[estadoInicial].getCoordsCentro().x -60, vertices[estadoInicial].getCoordsCentro().y-40), vertices[estadoInicial].getCoordsCentro(), ""));//arista estado inicial
-		
+                aristasActuales=new Vector();
 		for(int i=0; i<estados.length; i++)
 		{
 			for(int n=0; n<estados[i].size(); n++)
@@ -96,13 +97,24 @@ public class Graficador extends Canvas
 				{
 					try
 					{
-						//System.out.println("Vertice "+n+" va conectado con el vertice "+(Integer)((Vector)estados[i].get(n)).get(c)+" con el simbolo "+simbolos.get(i));
+						System.out.println("Vertice "+n+" va conectado con el vertice "+(Integer)((Vector)estados[i].get(n)).get(c)+" con el simbolo "+simbolos.get(i));
+                                                for(int u=0;u<aristasActuales.size();u++){
+                                                    Arista aris=(Arista)aristas.elementAt(u);
+                                                    if(aris.getCoords1()==vertices[(Integer)((Vector)estados[i].get(n)).get(c)].getCoordsCentro() &&aris.getCoords2()==vertices[n].getCoordsCentro()){
+                                                        aristaigual=true;
+                                                        
+                                                    }
+                                                            
+                                                }
+                                                if(aristaigual==false){
 						aristas.add(new Arista(vertices[n].getCoordsCentro(), vertices[(Integer)((Vector)estados[i].get(n)).get(c)].getCoordsCentro()));
+                                                }
 					}
 					catch(ClassCastException e)
 					{
 					}
 				}
+                                
 			}
 		}
 	}
