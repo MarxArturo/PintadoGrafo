@@ -65,7 +65,8 @@ public class AdministraArchivos
                 estados[i] = new Vector(1,1);
                 
             }
-
+            int numNodo=0;
+            Vector adyacente=new Vector();
             while ((linea = br.readLine()) != null)
             {
                 indice = 0;
@@ -82,37 +83,39 @@ public class AdministraArchivos
                 for(int i = 0; i < strEstados.length; i++)//por nodo
                 {
                     vector = new Vector(1,1);
-                    separador = new StringTokenizer(strEstados[i], ",");
-                    Vector adyacente=new Vector();
+                    separador = new StringTokenizer(strEstados[i]);
+                    
                     
                     while (separador.hasMoreTokens())//conectados a
                     {
                         String dato = separador.nextToken();
-                        if(!dato.equals("#")){
-                            adyacente.add(Integer.parseInt(dato));
-                            
-                        }
+                      
                         try
                         {
                             vector.add(Integer.parseInt(dato));
+                            adyacente.add(Integer.parseInt(dato));
+                            //System.out.print("dato: "+dato);                            
                         }
                         catch(NumberFormatException e)
                         {
                             vector.add(dato);
                         }
                     }
-                    Nodo nodo=new Nodo(i, adyacente);
-                    
+                    System.out.println("adyacente"+adyacente);
+//                    for(int w=0;w<adyacente.size();w++){
+//                        System.out.println("nodo "+numNodo+" adyacentes "+adyacente.elementAt(w));
+//                    }
+                    Nodo nodo=new Nodo(indice, adyacente);
+                    //adyacente.removeAllElements();
+                    //numNodo++;
                     estados[indice].add(vector);
                     nodos[indice]=nodo;
                     indice++;
                 }
 
-            }            
-            for(int y=0;y<nodos.length;y++){
-                Vector ady=nodos[y].getAdyacentes();
-                
-            }
+            } 
+            System.out.println("dok");
+            
             
             for(int r=0;r<nodos.length;r++){
                 allNodos.add(nodos[r]);
