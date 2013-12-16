@@ -113,9 +113,11 @@ public class Graficador extends Canvas
 					catch(ClassCastException e)
 					{
 					}
-				}
-                                
+				aristaigual=false;
+                                }
+                                aristaigual=false;
 			}
+                        aristaigual=false;
 		}
 	}
 	
