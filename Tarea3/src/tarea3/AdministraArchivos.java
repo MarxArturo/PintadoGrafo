@@ -67,7 +67,7 @@ public class AdministraArchivos
                 
             }
             int numNodo=0;
-            Vector adyacente=new Vector();
+//            Vector adyacente=new Vector();
             while ((linea = br.readLine()) != null)
             {
                 indice = 0;
@@ -80,7 +80,7 @@ public class AdministraArchivos
                   strEstados[cont] = separador.nextToken();
                   cont++;
                 }
-
+                Vector adyacente=new Vector();
                 for(int i = 0; i < strEstados.length; i++)//por nodo
                 {
                     vector = new Vector(1,1);
@@ -108,14 +108,15 @@ public class AdministraArchivos
                 }
                 //System.out.println("nodo "+numNodo+" adyacente "+adyacente);
                 Nodo nodo=new Nodo(numNodo, adyacente);
-                nodos[numNodo]=nodo;
+                //nodos[numNodo]=nodo;
+                allNodos.add(nodo);
                 System.out.println("nodo "+numNodo+" adyacente "+adyacente);
-                adyacente.removeAllElements();
+                //adyacente.removeAllElements();
                 numNodo++;
 
             } 
             
-            allNodos.addAll(Arrays.asList(nodos));
+          //  allNodos.addAll(Arrays.asList(nodos));
             System.out.println("dok");
 
             in.close();

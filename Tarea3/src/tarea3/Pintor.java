@@ -76,6 +76,7 @@ public class Pintor {
             }
             //ADICIONAR RESTRICCIÓN SI LA LISTA DE POSIBLES COLORES ES 0
             posicion=generador(0,posiblesColores.size()-1); //Generación del random para escoger el color
+            System.out.println("posicion: "+posicion);
             int pintarColor = (int) posiblesColores.elementAt(posicion);
             Vector pintado = new Vector();
             pintado.add((int)tmp.getId());
