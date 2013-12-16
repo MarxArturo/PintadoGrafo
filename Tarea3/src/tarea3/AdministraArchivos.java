@@ -1,6 +1,7 @@
 package tarea3;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -94,35 +95,29 @@ public class AdministraArchivos
                         {
                             vector.add(Integer.parseInt(dato));
                             adyacente.add(Integer.parseInt(dato));
-                            //System.out.print("dato: "+dato);                            
+                    
                         }
                         catch(NumberFormatException e)
                         {
                             vector.add(dato);
                         }
-                    }
-                    System.out.println("adyacente"+adyacente);
-//                    for(int w=0;w<adyacente.size();w++){
-//                        System.out.println("nodo "+numNodo+" adyacentes "+adyacente.elementAt(w));
-//                    }
-                    Nodo nodo=new Nodo(indice, adyacente);
-                    //adyacente.removeAllElements();
-                    //numNodo++;
-                    estados[indice].add(vector);
-                    nodos[indice]=nodo;
+                    }           
+                   // System.out.println("nodo "+numNodo+" adyacente "+adyacente);
+                    estados[indice].add(vector);                    
                     indice++;
                 }
+                //System.out.println("nodo "+numNodo+" adyacente "+adyacente);
+                Nodo nodo=new Nodo(numNodo, adyacente);
+                nodos[numNodo]=nodo;
+                System.out.println("nodo "+numNodo+" adyacente "+adyacente);
+                adyacente.removeAllElements();
+                numNodo++;
 
             } 
+            
+            allNodos.addAll(Arrays.asList(nodos));
             System.out.println("dok");
-            
-            
-            for(int r=0;r<nodos.length;r++){
-                allNodos.add(nodos[r]);
-            }
-//            for(int y=0;y<allNodos.size();y++){
-//            Nodo n=(Nodo)allNodos.elementAt(y);    
-//            System.out.println(n.getId());}
+
             in.close();
             
             return true;
