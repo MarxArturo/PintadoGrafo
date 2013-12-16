@@ -108,7 +108,12 @@ public class AdministraArchivos
                     indice++;
                 }
 
+            }            
+            for(int y=0;y<nodos.length;y++){
+                Vector ady=nodos[y].getAdyacentes();
+                
             }
+            
             for(int r=0;r<nodos.length;r++){
                 allNodos.add(nodos[r]);
             }
