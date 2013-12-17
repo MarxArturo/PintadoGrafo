@@ -110,14 +110,14 @@ public class AdministraArchivos
                 Nodo nodo=new Nodo(numNodo, adyacente);
                 //nodos[numNodo]=nodo;
                 allNodos.add(nodo);
-                System.out.println("nodo "+numNodo+" adyacente "+adyacente);
+               // System.out.println("nodo "+numNodo+" adyacente "+adyacente);
                 //adyacente.removeAllElements();
                 numNodo++;
 
             } 
             
           //  allNodos.addAll(Arrays.asList(nodos));
-            System.out.println("dok");
+           // System.out.println("dok");
 
             in.close();
             
