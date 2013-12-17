@@ -199,6 +199,7 @@ public class Interfaz extends javax.swing.JFrame {
 
             ventanaGrafico.setResizable(false);
             ventanaGrafico.setVisible(true);
+            BGraficar.setEnabled(false);
         } else {
             
             //		botonConvertir.setEnabled(false);

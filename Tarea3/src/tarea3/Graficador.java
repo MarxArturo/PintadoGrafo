@@ -205,6 +205,7 @@ public class Graficador extends Canvas
 		for(int i=0; i<vertices.length; i++)
 		{
                         Vector vert=(Vector)colores.elementAt(i);
+                        //Vector nod=(Vector)vert.elementAt(i);
                         Color s=colorss[(int)vert.elementAt(1)];
 			g.setColor(s);//color predeterminado vertices
 //			if(i==estadoInicial)
@@ -212,7 +213,7 @@ public class Graficador extends Canvas
 //				g.setColor(new Color(180, 0, 0));//color vertice inicial
 //			}
 			
-			g.fillOval(vertices[i].getCoords1().x, vertices[i].getCoords1().y, vertices[i].getRadio()*2, vertices[i].getRadio()*2);
+			g.fillOval(vertices[(int)vert.elementAt(0)].getCoords1().x, vertices[(int)vert.elementAt(0)].getCoords1().y, vertices[(int)vert.elementAt(0)].getRadio()*2, vertices[(int)vert.elementAt(0)].getRadio()*2);
 						
 //			if(vertices[i].isEstadoFinal())//vertices finales
 //			{
@@ -221,7 +222,7 @@ public class Graficador extends Canvas
 //			}
 			
 			g.setColor(Color.RED);
-			g.drawString("q"+i, vertices[i].getCoords1().x-10, vertices[i].getCoords1().y-2);
+			g.drawString("q"+i, vertices[(int)vert.elementAt(0)].getCoords1().x-10, vertices[(int)vert.elementAt(0)].getCoords1().y-2);
 		}
 	}
 }
