@@ -88,7 +88,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel5.setText("ESTUDIANTES:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("JULIAN RODRIGUEZ - 10");
+        jLabel6.setText("JULIAN RODRIGUEZ - 1040598");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("MARX ARTURO ARIAS - 0840247");
@@ -185,6 +185,8 @@ public class Interfaz extends javax.swing.JFrame {
         if (grafo.cargarAutomata(TxRuta.getText())) {
             
             //		botonConvertir.setEnabled(true);
+           //for (int i=0;i<51;i++){
+               
             allnodes=grafo.administrador.getAllNodos();
             Pintor pintor=new Pintor(allnodes, allcolor);
             //Grafico de automata entrante
@@ -199,7 +201,7 @@ public class Interfaz extends javax.swing.JFrame {
 
             ventanaGrafico.setResizable(false);
             ventanaGrafico.setVisible(true);
-            BGraficar.setEnabled(false);
+           //}//BGraficar.setEnabled(false);
         } else {
             
             //		botonConvertir.setEnabled(false);
