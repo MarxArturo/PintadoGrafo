@@ -6,16 +6,18 @@ import java.util.Vector;
 
 public class Pintor {
    
-    Vector nodos;    
-    Vector colores; 
+    private Vector nodos;    
+    private Vector colores; 
+    private boolean fallo;
+    private long tiempoInicio;
+    private long duracion;
     
-    
-    
-    public Pintor(Vector nodos, Vector colores){
+       public Pintor(Vector nodos, Vector colores){
         
         this.nodos    = (Vector)nodos.clone();
         this.colores  = (Vector)colores.clone();
-        
+        this.fallo=false;
+        this.tiempoInicio=System.currentTimeMillis();
     }
     
     public Vector colorVegas(){ // ESTE MÉTODO SOLO REPRESENTA UNA CORRIDA DEL ALGORITMO VEGAS
@@ -71,6 +73,7 @@ public class Pintor {
             if(posiblesColores.size()==0){
                 posiblesColores=(Vector)colores.clone();
                 System.out.println("LA RESPUESTA NO ES CORRECTA");
+                fallo=true;
             }
             
             int pintarColor = (int) posiblesColores.elementAt(posicion);
@@ -93,7 +96,8 @@ public class Pintor {
             if (nodosLocal.size()==0){
                 
                 fin=true;
-                
+                duracion=System.currentTimeMillis()-tiempoInicio;
+                //System.out.println("El tiempo de ejecución fue de "+duracion);
             }
             
             
@@ -125,5 +129,17 @@ public class Pintor {
         this.colores = colores;
     }
     
-       
+     public boolean isFallo() {
+        return fallo;
+    }
+
+    public void setFallo(boolean fallo) {
+        this.fallo = fallo;
+    }
+
+    public long getDuracion() {
+        return duracion;
+    }
+    
+    
 }

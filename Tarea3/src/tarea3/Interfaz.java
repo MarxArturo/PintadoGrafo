@@ -182,10 +182,12 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGraficarActionPerformed
+        //int contadorFallos=0;
         if (grafo.cargarAutomata(TxRuta.getText())) {
             
             //		botonConvertir.setEnabled(true);
-           //for (int i=0;i<51;i++){
+           
+          // for (int i=0;i<101;i++){
                
             allnodes=grafo.administrador.getAllNodos();
             Pintor pintor=new Pintor(allnodes, allcolor);
@@ -201,12 +203,17 @@ public class Interfaz extends javax.swing.JFrame {
 
             ventanaGrafico.setResizable(false);
             ventanaGrafico.setVisible(true);
-           //}//BGraficar.setEnabled(false);
+            /*if(pintor.isFallo()){
+                contadorFallos = contadorFallos + 1;
+            }*/
+          // }//BGraficar.setEnabled(false);
         } else {
             
             //		botonConvertir.setEnabled(false);
             JOptionPane.showMessageDialog(this, "Error leyendo el Archivo del Automata", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
+        //System.out.println("Se obtuvo "+contadorFallos+" respuestas erróneas");
     }//GEN-LAST:event_BGraficarActionPerformed
 
     private void BSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelectActionPerformed
