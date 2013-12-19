@@ -219,6 +219,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BcoloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcoloresActionPerformed
         int x= Integer.parseInt(TxCantColores.getText());
+        if(x<4){
+         JOptionPane.showMessageDialog(this, "Deben ser minimo 4 colores");   
+        }else{
         Colores = new Color[x];
         Color c;
         for(int d=0;d<x;d++){
@@ -228,7 +231,7 @@ public class Interfaz extends javax.swing.JFrame {
         allcolor.add(d);
         }
         BGraficar.setEnabled(true);
-        
+        }
     }//GEN-LAST:event_BcoloresActionPerformed
 
     private void TxCantColoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCantColoresActionPerformed
